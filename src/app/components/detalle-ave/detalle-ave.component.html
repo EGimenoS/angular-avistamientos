@@ -1,0 +1,74 @@
+<div *ngIf="cargando" class="row justify-content-center mt-4 mb-4">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="container-fluid" *ngIf="ave">
+  <div class="row justify-content-center mt-3">
+    <h1 class="m-t4 mb-4">DETALLE DE AVE: {{ ave.bird_name.toUpperCase() }}</h1>
+  </div>
+  <div class="row justify-content-center mb-5 ">
+    <div class="col-12 col-lg6">
+      <a [routerLink]="['/añadir-avistamiento/', ave.id]"
+        ><button mat-raised-button color="accent" class="mr-2">
+          <i class="material-icons">add</i>
+        </button></a
+      >
+      <span>AÑADIR AVISTAMIENTO</span>
+    </div>
+  </div>
+  <div class="row class=" mb-4>
+    <div class="col-12 col-lg-4">
+      <img [src]="ave.bird_image" alt="Foto del pájaro" />
+    </div>
+    <div class="col-12 col-lg-4">
+      <blockquote>
+        <p>{{ ave.bird_description }}</p>
+      </blockquote>
+    </div>
+    <div class="col-12 col-lg-2">
+      <h4>Nº DE AVISTAMIENTOS</h4>
+      <div class="circulo">
+        {{ ave.bird_sightings }}
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-5 mt-5">
+    <div class="col-12 col-lg6">
+      <button
+        (click)="toggleVerTabla()"
+        mat-raised-button
+        color="warn"
+        class="mr-2"
+        [disabled] = "ave.sightings_list.length == 0"
+      >
+        VER TABLA DE AVISTAMIENTOS
+      </button>
+    </div>
+  </div>
+  <div *ngIf="verTabla">
+    <table mat-table [dataSource]="ave.sightings_list" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="place">
+        <th mat-header-cell *matHeaderCellDef>Lugar</th>
+        <td mat-cell *matCellDef="let element">{{ element.place }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="long">
+        <th mat-header-cell *matHeaderCellDef>Longitud</th>
+        <td mat-cell *matCellDef="let element">{{ element.long }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lat">
+        <th mat-header-cell *matHeaderCellDef>Latitud</th>
+        <td mat-cell *matCellDef="let element">{{ element.lat }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <mapa *ngIf="ave" [avistamientos]="ave.sightings_list"></mapa>
+</div>

@@ -1,0 +1,83 @@
+<div class="row justify-content-center mt-2 mb-2">
+  <h1>AÑADE AVE A LA BASE DE DATOS</h1>
+</div>
+<form (ngSubmit)="addBird(addBirdForm)" #addBirdForm="ngForm">
+  <div class="row justify-content-center">
+    <div class="col-10 col-lg-8">
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Nombre</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Nombre del pájaro"
+            required
+            [(ngModel)]="model.bird_name"
+            name="bird_name"
+          />
+          <mat-hint>Indica nombre del pájaro</mat-hint>
+          <mat-error *ngIf="addBirdForm.invalid"
+            >Nombre de pájaro requerido</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="standard" class="mb-5 mt-3">
+          <mat-label>Descripción</mat-label>
+          <textarea
+            matInput
+            placeholder="Descripción del pájaro"
+            name="bird_description"
+            required
+            [(ngModel)]="model.bird_description"
+            minlength="20"
+          ></textarea>
+          <mat-hint>Descripción del pájaro</mat-hint>
+          <mat-error *ngIf="addBirdForm.invalid"
+            >Descripción de más de 20 carácteres requerida</mat-error
+          >
+        </mat-form-field>
+        <mat-checkbox
+          color="primary"
+          [(ngModel)]="visto"
+          name="visto"
+          class="mr-2"
+          (change)="setCoords()"
+        >
+          ¿Has visto el ave?</mat-checkbox
+        >
+        <mat-form-field *ngIf="visto" appearance="standard">
+          <mat-label>Localización del avistamiento</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Localización"
+            [(ngModel)]="model.place"
+            name="place"
+            [required] = "visto"
+          />
+          <mat-hint>Lugar de avistamiento(ej: Valencia)</mat-hint>
+          <mat-error *ngIf="addBirdForm.invalid"
+            >Nombre de localización necesaria si marcas el check</mat-error
+          >
+        </mat-form-field>
+        <div *ngIf="visto" class="row mt-4">
+          <div class="col-12 col-lg-8">
+            <span><mat-icon>location_searching</mat-icon></span
+            ><span>{{ model.long }}</span
+            >//<span>{{ model.lat }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <button
+          [disabled]="addBirdForm.invalid"
+          mat-raised-button
+          color="primary"
+        >
+          Añadir
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

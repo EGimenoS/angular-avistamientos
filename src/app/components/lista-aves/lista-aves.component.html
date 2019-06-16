@@ -1,0 +1,39 @@
+<div class="row justify-content-center mt-3">
+  <h1>LISTADO DE AVES</h1>
+</div>
+<div *ngIf="cargando" class="row justify-content-center mt-4 mb-4">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg4">
+    <a [routerLink]="['/añadir-ave']"
+      ><button mat-raised-button color="accent">
+        <i class="material-icons">add</i>
+      </button></a
+    >
+  </div>
+</div>
+<div class="row mt-2 justify-content-center">
+  <div class="col-12 col-lg-4" *ngFor="let ave of aves">
+    <mat-card class="card-ave mr-2 mt-2 mb-2" >
+      <mat-card-header class="pt-2">
+        <div mat-card-avatar>
+          <mat-icon matBadge=" {{ ave.bird_sightings }}" matBadgeSize="large"  [ngClass]="{'my-bird': ave.mine > 0}"
+            >local_see</mat-icon
+          >
+        </div>
+        <mat-card-title> {{ ave.bird_name }} </mat-card-title>
+        <mat-card-subtitle>Id: {{ ave.id }} </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="ave.bird_image" alt="Foto del pájaro" />
+      <mat-card-content>
+        <p>
+          Pájaro
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button routerLink="/detalle/{{ ave.id }}" mat-button>VER DETALLE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

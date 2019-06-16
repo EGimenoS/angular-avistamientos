@@ -1,0 +1,4 @@
+<div *ngIf="markers.length > 0 else sinAvistamientos" leaflet [leafletOptions]="options" [leafletLayers]="markers" (leafletMapReady)="onMapReady($event)" class="map"></div>
+<ng-template #sinAvistamientos>
+  <h4>No hay avistamientos para este ave!</h4>
+</ng-template>

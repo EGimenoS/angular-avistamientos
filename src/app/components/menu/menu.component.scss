@@ -1,0 +1,23 @@
+.option img {
+  max-width: 50%;
+}
+
+.option p {
+  font-size: 3em;
+}
+
+.row {
+  margin-top: 6em;
+}
+
+@media (max-width: 600px) {
+  .option p{
+    font-size: 1em;
+  }
+
+  .row {
+    margin-top: 1em;
+  }
+
+  
+}

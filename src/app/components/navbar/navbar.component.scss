@@ -1,0 +1,27 @@
+$primary_color: rgb(194, 24, 91);
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+
+.navbar {
+  background-color:  $primary_color;
+  font-family: 'Arvo', serif;
+}
+
+.navbar>img {
+  width: 5%;
+  height: 5%;
+}
+
+@media (max-width: 600px) {
+ .navbar>img {
+  width: 20%;
+  height: 20%;
+}
+
+ .navbar h1 {
+   font-size: 1em;
+ }
+
+ button {
+   margin-right: 0px;
+ }
+}

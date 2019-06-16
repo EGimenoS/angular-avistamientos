@@ -1,0 +1,46 @@
+<form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+  <div class="row justify-content-center">
+    <div class="col-10 col-lg-4">
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Nombre</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Input"
+            required
+            [(ngModel)]="model.user"
+            name="user"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Indica tu nombre de usuario</mat-hint>
+          <mat-error *ngIf="loginForm.invalid"
+            >Nombre de usuario requerido</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Password</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Input"
+            [type]="hide ? 'password' : 'text'"
+            required
+            [(ngModel)]="model.password"
+            name="password"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-hint>Introduce tu password</mat-hint>
+          <mat-error *ngIf="loginForm.invalid">Password requerido</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mt-5">
+        <button mat-raised-button color="primary">Entrar</button>
+      </div>
+    </div>
+  </div>
+</form>
