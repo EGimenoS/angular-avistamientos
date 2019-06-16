@@ -1,5 +1,29 @@
 # Avistamiento
 
+
+Práctica final de la asignatura "Frameworks Javascript" del máster en aplicaciones web de la UOC.
+La aplicación consiste en un frontend que se comunica con un backend que viene dado. Este backend consiste en un webservice tipo API REST que permite "loguear" al usuario (al enviar cualquier dupla de nombre y password el backend devuelve un id que debe usarse en el resto de interacciones con el mismo, obtener una lista de aves, añadir aves, ver el detalle de una ave y añadir un avistamiento.
+
+Algunas características de Angular o su ecosistema usadas:
+
+* Servicios para implementar las llamadas al webservice.
+* Interfaces para modelar algunos de los recursos
+* HttpClient
+* Observables
+* Template Forms
+* Router incluyendo guards.
+* Dependency Injection
+* Angular Material
+* Angular CLI
+
+Además se han usado otras características o librería stales como:
+
+* API de geolocalización de HTML5
+* Leaflet.js para mostrar mapas y puntos.
+
+---
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
 
 ## Development server
